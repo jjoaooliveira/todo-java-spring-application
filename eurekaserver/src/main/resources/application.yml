@@ -1,0 +1,18 @@
+server:
+    port: 8760
+
+eureka:
+    client:
+        register-with-eureka: false
+        fetch-registry: false
+    instance:
+        hostname: localhost
+
+spring:
+    application:
+        name: eureka-server
+
+logging:
+    level:
+        com.netflix.eureka: INFO
+        org.springframework.cloud.netflix.eureka: INFO
