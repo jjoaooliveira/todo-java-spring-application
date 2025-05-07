@@ -1,5 +1,6 @@
 package com.jjoaooliveira.todoapplication.account.entity;
 
+import java.util.List;
 import java.util.UUID;
 
 public class Account {
@@ -7,12 +8,24 @@ public class Account {
     private String name;
     private String email;
     private String password;
+    private List<Role> roles;
+    private Boolean enabled;
 
-    public Account(UUID id, String name, String email, String password) {
+    public Account(UUID id, String name, String email, String password, List<Role> roles, Boolean enabled) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.roles = roles;
+        this.enabled = enabled;
+    }
+
+    public Account(String name, String email, String password) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.roles = List.of(Role.USER);
+        this.enabled = true;
     }
 
     public UUID getId() {
@@ -38,8 +51,24 @@ public class Account {
     public String getPassword() {
         return password;
     }
-    
+
     public void setPassword(String password) {
         this.password = password;
+    }
+    
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }
