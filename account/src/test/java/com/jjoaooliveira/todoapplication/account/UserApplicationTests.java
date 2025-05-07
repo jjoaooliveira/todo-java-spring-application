@@ -1,4 +1,4 @@
-package com.jjoaooliveira.todoapplication.user;
+package com.jjoaooliveira.todoapplication.account;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
