@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
+import java.util.Optional;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,12 +13,13 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.jjoaooliveira.todoapplication.account.entity.Account;
+import com.jjoaooliveira.todoapplication.account.usecase.IAccountDataGateway;
 
 @ExtendWith(MockitoExtension.class)
 public class ReadAccountTest {
     
     @Mock
-    private IReadAccountDataGateway mockAccountDataGateway;
+    private IAccountDataGateway mockAccountDataGateway;
     
 
     @Test
@@ -26,8 +29,8 @@ public class ReadAccountTest {
         String email = "user@email.com";
         String name = "John";
 
-        when(mockAccountDataGateway.read(email))
-                .thenReturn(new Account("John", email, "password"));
+        when(mockAccountDataGateway.getAccountByEmail(email))
+                .thenReturn(Optional.of(new Account(email, name, "password")));
 
         // Act
         var actual = new ReadAccountImpl(mockAccountDataGateway).readAccount(email);
