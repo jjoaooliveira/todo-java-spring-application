@@ -4,9 +4,9 @@ public class AccountOutputData {
     private String email;
     private String name;
 
-    public AccountOutputData(String email, String name) {
-        this.email = email;
+    public AccountOutputData(String name, String email) {
         this.name = name;
+        this.email = email;
     }
 
     public String getEmail() {
