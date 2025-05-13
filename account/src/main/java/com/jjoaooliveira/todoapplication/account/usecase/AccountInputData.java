@@ -7,18 +7,25 @@ public class AccountInputData {
     private String name;
     private String email;
     private String password;
+    private String newPassword;
 
-    public AccountInputData(UUID id, String name, String email, String password) {
+    public AccountInputData(UUID id, String name, String email) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.password = password;
     }
 
     public AccountInputData(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
+    }
+
+    public AccountInputData(String name, String email, String password, String newPassword) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.newPassword = newPassword;
     }
 
     public UUID getId() {
@@ -37,8 +44,7 @@ public class AccountInputData {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getNewPassword() {
+        return this.newPassword;
     }
-
 }
