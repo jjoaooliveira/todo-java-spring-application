@@ -2,6 +2,7 @@ package com.jjoaooliveira.todoapplication.account.usecase.user;
 
 import com.jjoaooliveira.todoapplication.account.entity.Account;
 import com.jjoaooliveira.todoapplication.account.usecase.AccountInputData;
+import com.jjoaooliveira.todoapplication.account.usecase.AccountOutputData;
 import com.jjoaooliveira.todoapplication.account.usecase.IAccountDataGateway;
 import com.jjoaooliveira.todoapplication.account.usecase.IPasswordEncoderAdapter;
 
@@ -15,14 +16,17 @@ class CreateAccountImpl implements ICreateAccount {
     }
 
     @Override
-    public Account createAccount(AccountInputData accountInputData) {
+    public AccountOutputData createAccount(AccountInputData accountInputData) {
         Account user = new Account( 
             accountInputData.getName(), 
             accountInputData.getEmail(), 
             passwordEncoder.encode(accountInputData.getPassword())
         );
+        Account persistedAccount = userDataGateway.saveAccount(user);
 
-        return userDataGateway.saveAccount(user);
+        return new AccountOutputData(
+            persistedAccount.getName(),
+            persistedAccount.getEmail()
+        );
     }
-
 }

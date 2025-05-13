@@ -50,6 +50,5 @@ public class CreateAccountTest {
         assertNotNull(actual, "Account should not be null");
         assertEquals(name, actual.getName(), "Account name should match");
         assertEquals(email, actual.getEmail(), "Account email should match");
-        assertEquals(password, actual.getPassword(), "Account password should match");
    }
 }
