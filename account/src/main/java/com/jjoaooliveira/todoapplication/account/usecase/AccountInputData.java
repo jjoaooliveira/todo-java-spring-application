@@ -9,22 +9,14 @@ public class AccountInputData {
     private String password;
     private String newPassword;
 
-    public AccountInputData(UUID id, String name, String email) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-    }
-
     public AccountInputData(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
     }
 
-    public AccountInputData(String name, String email, String password, String newPassword) {
-        this.name = name;
+    public AccountInputData(String email, String newPassword) {
         this.email = email;
-        this.password = password;
         this.newPassword = newPassword;
     }
 
