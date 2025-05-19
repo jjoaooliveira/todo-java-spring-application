@@ -10,15 +10,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "accounts")
 public class AccountEntity {
     
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     
-    private String username;
+    private String name;
     
     private String email;
     
@@ -26,7 +28,7 @@ public class AccountEntity {
 
     @ManyToMany
     @JoinTable(
-        name = "account_roles",
+        name = "accounts_roles",
         joinColumns = @JoinColumn(name = "account_id"),
         inverseJoinColumns = @JoinColumn(name = "role_id")
     )
@@ -36,9 +38,9 @@ public class AccountEntity {
 
     public AccountEntity() {}
 
-    public AccountEntity(UUID id, String username, String email, String password, List<RoleEntity> roles, Boolean enabled) {
+    public AccountEntity(UUID id, String name, String email, String password, List<RoleEntity> roles, Boolean enabled) {
         this.id = id;
-        this.username = username;
+        this.name = name;
         this.email = email;
         this.password = password;
         this.roles = roles;
@@ -53,12 +55,12 @@ public class AccountEntity {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
