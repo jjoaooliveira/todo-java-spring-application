@@ -9,6 +9,9 @@ public class AccountInputData {
     private String password;
     private String newPassword;
 
+    public AccountInputData() {
+    }
+
     public AccountInputData(String name, String email, String password) {
         this.name = name;
         this.email = email;
